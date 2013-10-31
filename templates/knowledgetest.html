@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <script src="/static/js/jquery-1.10.2.min.js"></script>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <script src="/static/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+  
+  <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li class="active"><a href="./">Static top</a></li>
+            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+        {% if currentkgtid != 0 %}
+
+        <h2>当前已经做到第<stong>{{ currentkgtid }}题目</stong></h2>
+        <br>
+        <h5>选择你想要学习的知识</h5>
+        {% else %}
+        <h2>您还没有开始测试，马上开始吧!</h2>
+          <form action="/submitanswer/" method="post"/>
+            <input type="hidden" name="currentkgpid" value="{{ currentkgtid }}"/>
+          <div>
+            <h3>问题{{ startkgpoint.id }}:{{ startkgpoint.question }}</h3>
+          </div>
+          <div>
+            <textarea class="form-control" rows="3" placeholder="write your answer here."></textarea>
+          </div>
+            <br>
+          <div>
+            <button type="button" class="btn btn-primary">提交</button>
+          </div>
+          </form>
+
+        {% endif %}
+    </div>
+
+
+  </body>
+</html>
